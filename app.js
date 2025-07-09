@@ -31,7 +31,7 @@ app.use("/add-product", (req, res, next) => {
 });
 
 // ! Order of middlewares is important! They must come before the "/" one (that has res.send(<h1>...</h1>))
-app.use("/product", (req, res, next) => {
+app.post("/product", (req, res, next) => {
   // ^ by default, `req` doesn't try to Parse the incoming Request Body
   // to do that, we need to register a Parser (we put it before our Route-Handling middlewares)
   console.log(req.body);
