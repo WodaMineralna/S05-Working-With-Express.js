@@ -7,6 +7,10 @@ const app = express();
 //   next(); // ! This allows the request to continue to the next middleware in line
 // });
 
+// * Parses Bodies sent through a FORM
+// ^ and it automatically calls `next()`
+app.use(express.urlencoded())
+
 // * Handle favicon.ico requests to prevent browsers from triggering middleware twice
 app.get("/favicon.ico", (req, res) => {
   res.status(204).end();
