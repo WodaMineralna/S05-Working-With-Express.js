@@ -11,8 +11,12 @@ const app = express();
 app.use(express.urlencoded());
 
 app.use(adminRoutes);
-
 app.use(shopRoutes);
+
+// If an invalid URL was provided, we don't 'enter' any admin/shop Routes, thus we don't execute any Middleware, THUS we pass to this one
+app.use((req, res, next) => {
+  res.status(404).send("<h1>Page not found</h1>");
+});
 
 // * Handle favicon.ico requests to prevent browsers from triggering middleware twice
 app.get("/favicon.ico", (req, res) => {
