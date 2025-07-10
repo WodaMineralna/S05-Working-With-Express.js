@@ -11,6 +11,7 @@ const app = express();
 // * Parses Bodies sent through a FORM
 // ^ and it automatically calls `next()`
 app.use(express.urlencoded());
+app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/admin", adminRoutes);
 app.use(shopRoutes);
