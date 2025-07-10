@@ -10,7 +10,7 @@ const app = express();
 // ^ and it automatically calls `next()`
 app.use(express.urlencoded());
 
-app.use(adminRoutes);
+app.use("/admin", adminRoutes);
 app.use(shopRoutes);
 
 // If an invalid URL was provided, we don't 'enter' any admin/shop Routes, thus we don't execute any Middleware, THUS we pass to this one
