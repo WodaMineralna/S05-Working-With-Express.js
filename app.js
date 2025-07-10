@@ -1,3 +1,5 @@
+const path = require("path");
+
 const express = require("express");
 
 // ! Express.js Router is a valid Middleware Function!
@@ -15,7 +17,7 @@ app.use(shopRoutes);
 
 // If an invalid URL was provided, we don't 'enter' any admin/shop Routes, thus we don't execute any Middleware, THUS we pass to this one
 app.use((req, res, next) => {
-  res.status(404).send("<h1>Page not found</h1>");
+  res.status(404).sendFile(path.join(__dirname, "views", "404.html"));
 });
 
 // * Handle favicon.ico requests to prevent browsers from triggering middleware twice
