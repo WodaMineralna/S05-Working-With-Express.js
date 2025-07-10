@@ -1,3 +1,5 @@
+const path = require("path");
+
 const express = require("express");
 
 const router = express.Router();
@@ -6,9 +8,8 @@ router.get("/", (req, res, next) => {
   console.log('In "/" middleware!');
 
   // * Default Response Header: "text/html"
-  res.send(
-    '<h1>Hello from Express.js!</h1><form action="/admin/add-product" method="GET"><button type="submit">Go to Add-Product Page</button></form>'
-  );
+  res.sendFile(path.join(__dirname, "..", "views", "shop.html")); // ! We use path.join() so it works on Linux & Windows !!
+  // res.sendFile(path.resolve("views", "shop.html")); // * We can also do it like that
 });
 
 module.exports = router;
